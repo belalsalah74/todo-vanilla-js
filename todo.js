@@ -4,12 +4,14 @@ const container = document.querySelector(".container");
 const input = document.querySelector("input");
 const itemsHtmlList = document.querySelector(".items-list");
 const storageList = localStorage.getItem("items");
+// const deleteBtn = document.querySelector(".deleteBtn");
+// const checkBtn = document.querySelector(".checkBtn");
 let itemsList = storageList && storageList != [] ? JSON.parse(storageList) : [];
 let itemId;
 
 input.focus();
-
 loadItemsFromStorage();
+
 form.addEventListener("submit", createItem);
 
 function createItem(event) {
@@ -24,12 +26,14 @@ function createItem(event) {
   input.value = "";
   input.focus();
 }
+
 function addItemToList(item) {
   if (item.title.length > 0) {
     itemsList.push(item);
     addItemsToPage(itemsList);
   }
 }
+
 function addItemsToPage(list) {
   itemsHtmlList.innerHTML = "";
   list.forEach(function (item) {
@@ -58,17 +62,22 @@ function addiItemsToStorage() {
 }
 
 function loadItemsFromStorage() {
-  addItemsToPage(itemsList);
+  if (storageList) addItemsToPage(JSON.parse(storageList));
 }
-const deleteBtn = document.querySelector(".deleteBtn");
-const checkBtn = document.querySelector(".checkBtn");
 
-if (deleteBtn) {
-  deleteBtn.addEventListener("click", deleteItem);
-}
-if (checkBtn) {
-  checkBtn.addEventListener("click", checkItem);
-}
+itemsHtmlList.addEventListener("click", function (e) {
+  if (e.target.classList.contains("deleteBtn")) {
+    deleteItem(e);
+  } else if (e.target.classList.contains("checkBtn")) checkItem(e);
+});
+
+// if (deleteBtn) {
+//   deleteBtn.addEventListener("click", deleteItem);
+// }
+// if (checkBtn) {
+//   checkBtn.addEventListener("click", checkItem);
+// }
+
 function deleteItem(e) {
   itemDiv = e.target.parentElement;
   itemDiv.remove();
