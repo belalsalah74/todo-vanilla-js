@@ -1,0 +1,103 @@
+body {
+    font-family: sans-serif;
+    background-color: white;
+}
+
+
+.container {
+    width: 50%;
+    margin: auto;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding: 0 20px;
+    margin-top: 5%;
+}
+
+.container {
+    background-color: whitesmoke;
+}
+
+h1 {
+    text-align: center;
+}
+
+form,
+.item {
+    height: 50px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 0 30px;
+}
+
+form {
+    background-color: rgb(235, 235, 235);
+}
+
+.item {
+    background-color: white;
+    max-width: 100%;
+}
+
+input {
+    height: 25px;
+    width: 70%;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+
+}
+
+.itemTitle {
+    flex: 1;
+}
+
+#btn,
+.deleteBtn {
+    /* height: 25px; */
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: rgb(28, 182, 182);
+    color: white;
+    padding: 8px 15px;
+    cursor: pointer;
+
+}
+
+.deleteBtn {
+    background-color: red;
+    padding: 8px;
+    margin-left: 5px;
+}
+
+.checkBtn {
+    height: 5px;
+    width: 5px;
+    background-color: transparent;
+    border: 3px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+
+.checkBtn.checked {
+    border: 3px solid rgb(58, 247, 58);
+}
+
+.checkBtn.checked::before {
+    content: '\2713';
+    color: rgb(58, 247, 58);
+    font-weight: bolder;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
